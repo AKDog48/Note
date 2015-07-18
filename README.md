@@ -1,3 +1,3 @@
 # Note
 
-![DEMO](https://akdog48.github.io/Note/)
+[DEMO](https://akdog48.github.io/Note/)
