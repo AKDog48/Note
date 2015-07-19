@@ -1,17 +1,5 @@
-<<<<<<< Updated upstream
-APP.database = (function () {
-	'use strict';
-
-	function runQuery() {
-
-	}
-
-	function open() {
-		
-=======
 //indexedDB封装
 APP.database = (function () {
-	// body...
 
 	'use strict';
 
@@ -51,10 +39,10 @@ APP.database = (function () {
 					console.dir(event);
 				};
 				runQuery("",[],successCallback);
-				} else {
-					console.log("Not found "+IDB.name+".objectStoreNames");
-				}
-			};
+			}else {
+				console.log("Not found "+IDB.name+".objectStoreNames");
+			}
+		};
 
 		request.onupgradeneeded = function(e) {
 			console.log("running onupgradeneeded");
@@ -65,19 +53,7 @@ APP.database = (function () {
 				var objectStore = IDB.db.createObjectStore(IDB.name,{keyPath:'id', autoIncrement: true});
 				objectStore.createIndex("Title", "Title", { unique: false});
 			}
-		}
->>>>>>> Stashed changes
-	}
-
-	return {
-		open: open,
-		runQuery: runQuery
-<<<<<<< Updated upstream
-	};
-}());
-=======
+		};
 	}
 }());
 
-
->>>>>>> Stashed changes
