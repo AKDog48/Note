@@ -2,7 +2,7 @@ APP.applicationController = (function () {
 	'use strict';
 
 	function start() {
-		document.body.innerText = "Start!";
+		$('body').innerText = "Start!";
 	}
 
 	return {
