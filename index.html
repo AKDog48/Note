@@ -4,19 +4,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
 	<link rel="stylesheet" href="view/css/global.css">
-
+	
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 	<script>
 	window.APP = {};
-	window.onload = function() {
+	$(document).ready(function(){
+		console.log("ready %o",new Date());
 		APP.applicationController.start();
-	}
-	var $ = function (e) {
-        return document.querySelector(e);
-    }
+	})
 	</script>
-	<script src="view/js/templates.js"></script>
+	<script src="controller/templates.js"></script>
 	<script src="controller/applicationController.js"></script>
+	<script src="controller/notesController.js"></script>
 	<script src="module/database.js"></script>
+	<script src="module/note.js"></script>
 	<title>Note</title>
 </head>
 <body>
