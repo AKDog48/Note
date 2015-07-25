@@ -30,7 +30,7 @@ APP.templates = (function (){
 		for (var j in hash){
 			output = output + '<li><h2><a href="#'+ j +'">' + j + '(' + hash[j] + ')' + '</a></h2></li>';
 		}
-		return "<ul>" + output + "</ul>";
+		return '<dl><dt>记事本</dt>' + output + '<dt><a href="#new">新建笔记</a></dt></dl>';
 	}
 
 	function titleList(notes){
@@ -44,7 +44,7 @@ APP.templates = (function (){
 			output = output + '<li><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2></li>';
 		}
 
-		return "<ul>" + output + "</ul>";
+		return "<dl><dt>笔记</dt>" + output + "</dl>";
 	}
 
 	function contents(note) {
