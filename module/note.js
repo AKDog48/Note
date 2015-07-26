@@ -3,7 +3,7 @@
 APP.note = (function () {
 	'use strict';
 	function addNote(data, successCallback){
-		//console.log(data);
+		// console.log(data);
 		APP.database.runQuery("queryAdd",data,successCallback);
 	}
 

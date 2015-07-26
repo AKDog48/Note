@@ -1,0 +1,185 @@
+/* reset */
+html{color:#000;background:#3E273A;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}
+img{border:none;}
+em,strong{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+table {border-collapse:collapse;border-spacing:0;}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4, h5, h6{font-size:100%;}
+a:link,a:visited {
+  color:#1D1E19;
+  text-decoration:none;
+  }    
+a:hover,a:active {
+  color:#CE3D46;
+  text-decoration:none;
+}
+
+@media screen and (min-width: 960px){
+	#window {
+		width: 950px;
+		margin: auto;
+	}
+	#window:after{
+		width: 950px;
+	}
+}
+#window {
+	height: 500px;
+	margin: 44px auto;
+}
+#window:after{
+	content: "AK48dog.Note";
+	text-align: center;
+	background-color: #EECA98;
+	font-size: 30px;
+	position: absolute;
+	display: block;
+	height: 40px;
+	border-radius: 0 0 8px 8px;
+	border-bottom: solid 4px #3E273A;
+	margin-top: -44px; 
+}
+
+#tags {
+	height: 100%;
+	width: 20%;
+	float: left;
+	background-color: #A9929F;
+	border-radius: 5px;
+}
+
+#titles {
+	height: 100%;
+	float: left;
+	background-color: #B3EBEC;
+	border-radius: 5px;
+	width: 30%;
+}
+
+#contents {
+	height: 100%;
+	width: 50%;
+	background-color: #DB5E0D;
+	border-radius: 5px;
+	float: left;
+}
+#tags > a{
+	text-align: center;
+	display: block;
+	border: 1px solid;
+	margin: 15px 26px;
+	font-size: 16px;
+	padding: 5px 10px;
+}
+#tags dl{
+	display: block;
+	padding: 40px 30px;
+	margin: 20px auto;
+}
+#tags dt:first-child{
+	margin-left: 13px;
+	font-size: 30px;
+	line-height: 30px;
+}
+#tags dt:first-child:before{
+	content: '';
+	display: inline-block;
+	margin: 5px 1px 0 -20px;
+	width: 35px;
+	height: 35px;
+	background: url(../images/note.png) no-repeat ;
+	background-size: 35px; 
+}
+#tags dt:first-child:after{
+	content: ":";
+}
+#tags dt:last-child:before{
+	content: '';
+	display: block;
+	position: absolute;
+	margin: 6px 0 0 16px;
+	width: 16px;
+	height: 16px;
+	background: url(../images/add.png);
+	background-size: 16px;
+}
+#tags dt > a{
+	position: absolute;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 10px;
+	padding: 5px 5px 5px 25px;
+	border: solid 1px;
+}
+#tags dt > a:hover,#tags dt > a:active{
+	color: #161713;
+	border: 1px solid #CE3D46;
+}
+#tags dd{
+	margin: 7px 0 7px 6px;
+	padding: 5px;
+}
+#titles {
+	overflow: auto;
+}
+#titles dl{
+	display: block;
+	padding: 40px 30px;
+	margin: 20px auto;
+}
+#titles dl > dt{
+	margin-top: 55px;
+	font-size: 30px;
+}
+#titles dl > dt:after{
+	content: ":"
+}
+#titles dd{
+	margin: 10px 10px;
+}
+#titles dd  a{
+	font-size: 18px;
+	border-bottom:1px solid; 
+}
+#titles dd button{
+	padding: 2px;
+	margin: 0 5px;
+	float: right;
+	background-color:transparent;
+	border:1px solid; 
+}
+#titles button:hover,#titles button:active {
+  color:#CE3D46;
+  text-shadow:none;
+	outline: none;
+}
+#titles h3{
+	margin: 5px 5%;
+}
+#titles button{
+	padding: 2px;
+	margin: 0 5% 0 0;
+	float: right;
+	background-color:transparent;
+	border:1px solid;
+}
+
+#titles input{
+	text-shadow:none;
+	border:none;
+	outline: none;
+}
+#titles textarea{
+	width: 90%;
+	height: 380px;
+	margin: 10px 5%;
+	text-shadow:none;
+	border:none;
+	outline: none;
+	resize: none;
+}

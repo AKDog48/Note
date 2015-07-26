@@ -59,7 +59,9 @@ APP.database = (function () {
 				return;
 			}
 			var req = store.add(data);
+			// console.log(data);
 			req.onsuccess = function (e){
+				// console.log(e,"add success");
 				successCallback();
 			};
 			req.onerrror = function(){
@@ -141,9 +143,9 @@ APP.database = (function () {
 
 				//创建一个索引通过Title搜索文章
 				//Title不能重复
-				objectStore.createIndex("titleIndex", "Title", {unique:true});
+				//objectStore.createIndex("titleIndex", "Title", {unique:true});
 
-				objectStore.createIndex("tagsIndex", "Tags", {unique:false});
+				// objectStore.createIndex("tagsIndex", "Tags", {unique:false});
 
 				//初始化一条记录
 				for(var i in notesData){

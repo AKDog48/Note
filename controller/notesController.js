@@ -48,6 +48,7 @@ APP.notesController = (function (){
 			if(key){
 				alert("确认保存编辑？");
 				APP.note.addNote(notes,function(){
+					// console.log(notes);
 						APP.note.deleteNote(key,function(){
 							alert("保存成功！");
 						});
