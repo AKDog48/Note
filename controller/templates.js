@@ -23,19 +23,18 @@ APP.templates = (function (){
 			}
 		}
 
-		for (var o = 0; o < tags.length; o = o +1){
+		for (var o = 0; o < tags.length; o = o + 1){
 			hash[tags[o]] = (hash[tags[o]] || 0) + 1;
 		}
 
 		for (var j in hash){
 			output = output + '<li><h2><a href="#'+ j +'">' + j + '(' + hash[j] + ')' + '</a></h2></li>';
 		}
-		return '<dl><dt>记事本</dt>' + output + '<dt><a href="#new">新建笔记</a></dt></dl>';
+		return '<a href="">刷新</a><dl><dt>记事本</dt>' + output + '<dt><a href="#new">新建笔记</a></dt></dl>';
 	}
 
 	function titleList(notes){
 		var i, l, output = " ";
-		console.log(notes);
 		if(!notes.length) {
 			return "<p><i>No notes have been found, maybe you should <b>create a note</b></i></p>";
 		}
@@ -58,11 +57,21 @@ APP.templates = (function (){
     return 'Please wait&hellip;';
   }
 
+  function edit(){
+  	return '<h3>标题： <input id="newTitle" type="text"></h3><h3>标签：<input id="newTags"type="text" placeholder="多个标签请用,隔开，例如：tag1,tag2"></h3><h3>内容：</h3><textarea  id="newContents"></textarea></br><button id="newNote" onclick="APP.notesController.saveNote()">提交</button>';
+  }
+
+  function markdown(){
+  	return '<div id="markdownview"></div>';
+  }
+
 	return {
 		application: application,
 		tagList: tagList,
 		contents: contents,
 		titleList: titleList,
-		noteLoading: noteLoading
+		noteLoading: noteLoading,
+		edit: edit,
+		markdown: markdown
 	};	
 }());

@@ -27,17 +27,25 @@ APP.applicationController = (function () {
 	}
 
 	function showNote(tagName,key){
-		
-		if(key == true){
+		// console.log("'"+tagName+"'","'"+key+"'",key != false);
+		if(key != false){
+			// console.log("show Contents");
 			$("#contents").html(APP.templates.noteLoading());
+			APP.notesController.showTagList();
 			APP.notesController.showContents(key);
+			// console.log("showContents done");
 		}else{
-			console.log(tagName);
 			$("#titles").html(APP.templates.noteLoading());
-			APP.notesController.showTitleList(tagName);
+			if(tagName == "new"){
+				// console.log("show new");
+				APP.notesController.showTagList();
+				APP.notesController.newNote();
+			}else{
+				// console.log("show title");
+				APP.notesController.showTagList();
+				APP.notesController.showTitleList(tagName);
+			}
 		}
-
-
 	}
 
 	function route(){
@@ -61,6 +69,7 @@ APP.applicationController = (function () {
 	function start() {
 		$('body').innerText = "Start!";
 		APP.database.open(function(){
+				//console.log("database callback success")
 				$(window).bind("hashchange",route);
 				$("body").html(APP.templates.application());
 

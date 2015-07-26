@@ -2,8 +2,9 @@
 
 APP.note = (function () {
 	'use strict';
-	function addNote(id, successCallback){
-
+	function addNote(data, successCallback){
+		//console.log(data);
+		APP.database.runQuery("queryAdd",data,successCallback);
 	}
 
 	function deleteNote(id, successCallback) {
@@ -19,15 +20,12 @@ APP.note = (function () {
 	}
 
 	function selectTitles(tag, successCallback){
-		console.log(tag);
 		APP.database.runQuery("queryGet", [], function(e){
 			var notes = [];
 			for (var i = 0; i < e.length; i++) {
-				console.log(i);
 				for(var j = 0; j < e[i].value.Tags.length; j++){
 					if (e[i].value.Tags[j] == tag){
 						notes.push(e[i]);
-						console.log(e[i]);
 					}
 				}
 			}
@@ -35,7 +33,7 @@ APP.note = (function () {
 		});
 	}
 
-	function selectContents(key, successCallback){
+	function selectContents(key,successCallback){
 		APP.database.runQuery("queryIndex", key, successCallback);
 	}
 

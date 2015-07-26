@@ -15,20 +15,27 @@ APP.database = (function () {
 
 	function runQuery(query, data, successCallback) {
 
-		var tx = IDB.db.transaction(IDB.storeName,'readwrite');
+		var tx = IDB.db.transaction([IDB.storeName],"readwrite");
 		var store = tx.objectStore(IDB.storeName);
 
 		var queryGet = function (data,successCallback){
 			var notes = [];
+
 			store.openCursor().onsuccess = function(e){
 				var cursor = e.target.result;
+				var note = {key : "",value : null};
 				if(cursor){
-					console.log(cursor);
-					notes.push(cursor);
+					note.key = cursor.key;
+					note.value = cursor.value;
+					notes.push(note);
+					// console.log(cursor.key,cursor.value);
 					cursor.continue();
-				}else{
-					successCallback(notes);
 				}
+				else{
+					// console.log(note,notes);
+					successCallback(notes);
+				};
+
 			}
 		}
 
@@ -36,9 +43,12 @@ APP.database = (function () {
 			store.openCursor().onsuccess = function(e){
 				var cursor = e.target.result;
 				if(cursor){
+					// console.log(cursor.key,cursor.value);
 					if(cursor.key == data){
+						// console.log(cursor.value);
 						successCallback(cursor.value);
 					}
+					cursor.continue();
 				}
 			}
 		}
@@ -50,7 +60,7 @@ APP.database = (function () {
 			}
 			var req = store.add(data);
 			req.onsuccess = function (e){
-				console.debug("Insertion in DB successful");
+				alert("提交成功！");
 				successCallback;
 			};
 			req.onerrror = function(){
@@ -99,13 +109,11 @@ APP.database = (function () {
 
 		request.onsuccess = function(e) {
 			IDB.db = e.target.result;
-			console.log(IDB.db.version);
 			IDB.db.onerrror = function(event){
 				alert("Database error:" + evernt.target.errorCode);
 				console.dir(event.target);
 			};
 			if(IDB.db.objectStoreNames.contains(IDB.storeName)){
-				console.log("contains table" + IDB.name);
 				//对表的读写权限
 				var transaction = IDB.db.transaction([IDB.storeName],"readwrite");
 				transaction.oncomplete = function(event){
@@ -117,8 +125,8 @@ APP.database = (function () {
 			}else {
 				console.log("Not found "+IDB.name+".objectStoreNames");
 			}
-			runQuery("queryGet",[],successCallback);
-
+			//runQuery("queryGet",[],successCallback);
+			successCallback();
 		};
 
 		request.onupgradeneeded = function(e) {
@@ -132,14 +140,10 @@ APP.database = (function () {
 				var objectStore = IDB.db.createObjectStore(IDB.storeName,{autoIncrement: true});
 
 				//创建一个索引通过Title搜索文章
-				//Title可能重复，不能用unique索引
-				objectStore.createIndex("titleIndex", "Title", {unique:false});
+				//Title不能重复
+				objectStore.createIndex("titleIndex", "Title", {unique:true});
 
 				objectStore.createIndex("tagsIndex", "Tags", {unique:false});
-
-				//创建一个索引通过PublishTime搜索文章
-				//两篇文章发表时间不会一样，因此使用unique索引
-				objectStore.createIndex("PublishTime", "PublishTime", {unique:true});
 
 				//初始化一条记录
 				for(var i in notesData){
