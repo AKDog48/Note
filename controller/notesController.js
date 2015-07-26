@@ -16,7 +16,9 @@ APP.notesController = (function (){
 	function showContents(key, successCallback){
 		// console.log("'"+key+"'");
 		APP.note.selectContents(key,function (data){
-			$("#contents").html(APP.templates.contents(data));
+			var contents = markdown.toHTML(data.Contents);
+			// console.log(contents);
+			$("#contents").html(APP.templates.contents(data,contents));
 			// console.log(key,APP.templates.contents(data));
 		});
 	}

@@ -46,11 +46,13 @@ APP.templates = (function (){
 		return "<dl><dt>笔记</dt>" + output + "</dl>";
 	}
 
-	function contents(note) {
+	function contents(note,contents) {
 		if(!note) { 
 			window.location = "#error";
 		}
-		return "<h3>标题: "+ note.Title + "</h3>" + "<h4><strong>标签: </strong>" + note.Tags.join(",") + "</h4><h4><strong>发表时间: </strong>"+ note.PublishTime+"</h4><br/><p>"+ note.Contents +"</p>"
+		// var markdownContent = markdown.toHTML(note.Contents);
+		// console.log(markdown.toHTML("!!"));
+		return "<h3>标题: "+ note.Title + "</h3>" + "<h4><strong>标签: </strong>" + note.Tags.join(",") + "</h4><h4><strong>发表时间: </strong>"+ note.PublishTime+"</h4><br/>"+ contents 
 	}
 
 	function noteLoading() {
