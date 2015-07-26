@@ -46,7 +46,7 @@ APP.database = (function () {
 					// console.log(cursor.key,cursor.value);
 					if(cursor.key == data){
 						// console.log(cursor.value);
-						successCallback(cursor.value);
+						successCallback(cursor.value,cursor.key);
 					}
 					cursor.continue();
 				}
@@ -69,8 +69,10 @@ APP.database = (function () {
 		};
 
 		var queryDelete = function (data,successCallback){
-			store.delete(data);
-			request.onsuccess = function(e){
+			var key = parseInt(data);
+			var req = store.delete(key);
+			req.onsuccess = function(e){
+				alert("删除成功");
 				successCallback;
 			};
 		};

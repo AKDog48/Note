@@ -14,7 +14,7 @@ APP.templates = (function (){
 		var hash = {};
 
 		if (!data.length) {
-			return "<p><i>No notes have been found, maybe you should <b>create a note</b></i></p>";
+			return '<a href="">刷新</a><dl><dt>记事本</dt><dt><a href="#new">新建笔记</a></dt></dl><p><i>No notes have been found, maybe you should <b>create a note</b></i></p>';
 		}
 
 		for (i = 0; i < data.length; i = i + 1){
@@ -40,7 +40,7 @@ APP.templates = (function (){
 		}
 
 		for (i = 0; i < notes.length; i++){
-			output = output + '<li><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2></li>';
+			output = output + '<li><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2> <button class="deleteA" onclick="APP.note.deleteNote('+notes[i].key+');">删除</button></li>';
 		}
 
 		return "<dl><dt>笔记</dt>" + output + "</dl>";

@@ -8,7 +8,7 @@ APP.note = (function () {
 	}
 
 	function deleteNote(id, successCallback) {
-		APP.database.runQuery();
+		APP.database.runQuery("queryDelete", id, successCallback);
 	}
 
 	function insertNotes(){
