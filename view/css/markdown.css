@@ -1,0 +1,122 @@
+/**
+ * MarkdownCSS
+ */
+
+#contents{
+	color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  font-size:13px;
+  line-height:1.5em;
+  padding:1em;
+  margin:auto;
+  max-width:42em;
+  background:#fefefe;
+}
+
+#contents h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+#contents h1 {
+    color: #000000;
+    font-size: 28px;
+}
+ 
+#contents h2 {
+    border-bottom: 2px solid #CCCCCC;
+    color: #000000;
+    font-size: 24px;
+}
+ 
+#contents h3 {
+    border-bottom: 2px solid #CCCCCC;
+    font-size: 18px;
+}
+ 
+#contents h4 {
+    font-size: 16px;
+}
+ 
+#contents h5 {
+    font-size: 14px;
+}
+ 
+#contents h6 {
+    color: #777777;
+    background-color: inherit;
+    font-size: 14px;
+}
+ 
+#contents hr {
+    height: 0.2em;
+    border: 0;
+    color: #CCCCCC;
+    background-color: #CCCCCC;
+}
+ 
+#contents p, blockquote, ul, ol, dl, li, table, pre {
+    margin: 15px 0;
+}
+ 
+#contents p{
+    margin:1em 0;
+}
+ 
+#contents pre { 
+    background-color: #F8F8F8;    
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    overflow: auto;
+    padding: 5px;
+}
+ 
+#contents pre code {
+    background-color: #F8F8F8;
+    border: none;    
+    padding: 0;
+}
+ 
+#contents code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    background-color:#F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    padding: 0 0.2em;
+    line-height: 1;
+}
+ 
+#contents pre > code {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+ 
+ 
+#contents a{ color: #0645ad; text-decoration:none;}
+#contents a:visited{ color: #0b0080; }
+#contents a:hover{ color: #06e; }
+#contents a:active{ color:#faa700; }
+#contents a:focus{ outline: thin dotted; }
+#contents a:hover, a:active{ outline: 0; }
+ 
+#contents ::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+#contents ::selection{background:rgba(255,255,0,0.3);color:#000}
+ 
+#contents a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+#contents a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+ 
+#contents blockquote{
+    color:#666666;
+    margin:0;
+    padding-left: 3em;
+    border-left: 0.5em #EEE solid;
+}
+ 
+#contents ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+#contents li p:last-child { margin:0 }
+#contents dd { margin: 0 0 0 2em; }
+ 
+#contents img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; max-width:100%;}
+ 
+#contents table { border-collapse: collapse; border-spacing: 0; }
+#contents td { vertical-align: top; }

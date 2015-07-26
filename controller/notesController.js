@@ -53,7 +53,9 @@ APP.notesController = (function (){
 						});
 				});
 			}else{
-				APP.note.addNote(notes);
+				APP.note.addNote(notes,function(){
+					alert("保存成功！");
+				});
 			}
 			
 		}
@@ -74,7 +76,7 @@ APP.notesController = (function (){
 	function deleteNote(key){
 		APP.note.deleteNote(key,function(){
 				alert("删除成功");
-		})
+		});
 	}
 	return {
 		showContents: showContents,

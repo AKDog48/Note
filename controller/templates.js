@@ -40,7 +40,12 @@ APP.templates = (function (){
 		}
 
 		for (i = 0; i < notes.length; i++){
-			output = output + '<dd><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2> <button class="deleteA" onclick="APP.notesController.deleteNote('+notes[i].key+');">删除</button><button class="editA" onclick="APP.notesController.editNote('+notes[i].key+');">编辑</button></dd>';
+			if (notes[i].key == 1){
+				output = output + '<dd><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2></dd>';
+
+			}else{
+				output = output + '<dd><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2> <button class="deleteA" onclick="APP.notesController.deleteNote('+notes[i].key+');">删除</button><button class="editA" onclick="APP.notesController.editNote('+notes[i].key+');">编辑</button></dd>';
+			}
 		}
 
 		return "<dl><dt>笔记</dt>" + output + "</dl>";

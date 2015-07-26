@@ -10,7 +10,7 @@ APP.database = (function () {
 		db:null
 	};
 	var notesData = [
-		{Title:"使用手册", Tags:["关于"], Contents:"使用IndexDB存储的基于markdown语法的知识库", PublishTime: new Date().toLocaleString()}
+		{Title:"使用手册", Tags:["关于"], Contents:"使用IndexedDB存储的基于markdown语法的知识库。我们就是**AKDog48 Crew!** 致谢：[百度IFE](https://github.com/baidu-ife)", PublishTime: new Date().toLocaleString()}
 	];
 
 	function runQuery(query, data, successCallback) {
@@ -60,8 +60,7 @@ APP.database = (function () {
 			}
 			var req = store.add(data);
 			req.onsuccess = function (e){
-				alert("提交成功！");
-				successCallback;
+				successCallback();
 			};
 			req.onerrror = function(){
 				console.error("add error", this.error);
