@@ -72,8 +72,7 @@ APP.database = (function () {
 			var key = parseInt(data);
 			var req = store.delete(key);
 			req.onsuccess = function(e){
-				alert("删除成功");
-				successCallback;
+				successCallback();
 			};
 		};
 

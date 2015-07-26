@@ -31,7 +31,7 @@ APP.notesController = (function (){
 		});
 	}
 
-	function saveNote(){
+	function saveNote(key){
 		var title = $("#newTitle").val();
 		var tags = $("#newTags").val();
 		var contents = $("#newContents").val();
@@ -45,16 +45,44 @@ APP.notesController = (function (){
 				Title: title, Tags:tagArr, Contents: contents, PublishTime: new Date().toLocaleString()
 			};
 			//console.log(notes);
-			APP.note.addNote(notes);
+			if(key){
+				alert("确认保存编辑？");
+				APP.note.addNote(notes,function(){
+						APP.note.deleteNote(key,function(){
+							alert("保存成功！");
+						});
+				});
+			}else{
+				APP.note.addNote(notes);
+			}
+			
 		}
 	}
 
+	function editNote(key){
+		APP.note.selectContents(key,function(data){
+			var contents = markdown.toHTML(data.Contents);
 
+			$("#titles").html(APP.templates.edit(data,contents,key));
+			$("#contents").html(APP.templates.markdown(contents));
+			$("#newContents").bind('input propertychange',function(){
+				$("#markdownview").html(markdown.toHTML(this.value));
+			});
+		});
+
+	}
+	function deleteNote(key){
+		APP.note.deleteNote(key,function(){
+				alert("删除成功");
+		})
+	}
 	return {
 		showContents: showContents,
 		showTitleList: showTitleList,
 		showTagList: showTagList,
 		newNote: newNote, 
 		saveNote: saveNote,
+		editNote: editNote,
+		deleteNote: deleteNote
 	};
 }());

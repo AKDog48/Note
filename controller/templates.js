@@ -28,7 +28,7 @@ APP.templates = (function (){
 		}
 
 		for (var j in hash){
-			output = output + '<li><h2><a href="#'+ j +'">' + j + '(' + hash[j] + ')' + '</a></h2></li>';
+			output = output + '<dd><h2><a href="#'+ j +'">' + j + '(' + hash[j] + ')' + '</a></h2></dd>';
 		}
 		return '<a href="">刷新</a><dl><dt>记事本</dt>' + output + '<dt><a href="#new">新建笔记</a></dt></dl>';
 	}
@@ -40,7 +40,7 @@ APP.templates = (function (){
 		}
 
 		for (i = 0; i < notes.length; i++){
-			output = output + '<li><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2> <button class="deleteA" onclick="APP.note.deleteNote('+notes[i].key+');">删除</button></li>';
+			output = output + '<dd><h3><a href="#' + notes[i].key + '">'+ notes[i].value.Title +'</a></h2> <button class="deleteA" onclick="APP.notesController.deleteNote('+notes[i].key+');">删除</button><button class="editA" onclick="APP.notesController.editNote('+notes[i].key+');">编辑</button></dd>';
 		}
 
 		return "<dl><dt>笔记</dt>" + output + "</dl>";
@@ -59,12 +59,20 @@ APP.templates = (function (){
     return 'Please wait&hellip;';
   }
 
-  function edit(){
-  	return '<h3>标题： <input id="newTitle" type="text"></h3><h3>标签：<input id="newTags"type="text" placeholder="多个标签请用,隔开，例如：tag1,tag2"></h3><h3>内容：</h3><textarea  id="newContents"></textarea></br><button id="newNote" onclick="APP.notesController.saveNote()">提交</button>';
+  function edit(note,contents,key){
+  	if(!note){
+  		return '<h3>标题： <input id="newTitle" type="text"></h3><h3>标签：<input id="newTags"type="text" placeholder="多个标签请用,隔开，例如：tag1,tag2"></h3><h3>内容：</h3><textarea  id="newContents"></textarea></br><button id="newNote" onclick="APP.notesController.saveNote()">提交</button>';
+  	}
+
+		return '<h3>标题： <input id="newTitle" type="text" value='+note.Title+'></h3><h3>标签：<input id="newTags"type="text" value='+note.Tags.join(",")+'></h3><h3>内容：</h3><textarea  id="newContents">'+note.Contents+'</textarea></br><button id="newNote" onclick="APP.notesController.saveNote('+key+')">提交</button>';
   }
 
-  function markdown(){
-  	return '<div id="markdownview"></div>';
+  function markdown(contents){
+  	if(!contents){
+	  	return '<div id="markdownview"></div>';
+  	}else{
+  		return '<div id="markdownview">'+contents+'</div>';
+  	}
   }
 
 	return {
